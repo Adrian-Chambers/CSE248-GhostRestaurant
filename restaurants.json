@@ -1,0 +1,71 @@
+[
+    {
+        "restaurant_id": 1,
+        "restaurant_name": "Bill's Grill",
+        "address":{
+            "street": "123 Address Street",
+            "city": "Selden",
+            "state": "NY",
+            "postal_code": "11784"
+        },
+        "cuisines":[
+            "American", "Burgers"
+        ],
+        "menu_ids":[
+            1, 2, 3, 4, 5, 6, 7, 8
+        ],
+        "image": "https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
+    },
+    {
+        "restaurant_id": 2,
+        "restaurant_name": "Lakeside Gourmet Dining",
+        "address":{
+            "street": "234 Address Street",
+            "city": "Selden",
+            "state": "NY",
+            "postal_code": "11784"
+        },
+        "cuisines":[
+            "Gourmet"
+        ],
+        "menu_ids":[
+            4, 7
+        ],
+        "image": "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
+    },
+    {
+        "restaurant_id": 3,
+        "restaurant_name": "Sweet Escape",
+        "address":{
+            "street": "345 Address Street",
+            "city": "Selden",
+            "state": "NY",
+            "postal_code": "11784"
+        },
+        "cuisines":[
+            "Dessert", "Smoothies"
+        ],
+        "menu_ids":[
+
+        ],
+        "image": "https://images.unsplash.com/photo-1543573852-1a71a6ce19bc?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80"
+    },
+    {
+        "restaurant_id": 4,
+        "restaurant_name": "The Cottage",
+        "address":{
+            "street": "456 Address Street",
+            "city": "Selden",
+            "state": "NY",
+            "postal_code": "11784"
+        },
+        "cuisines":[
+            "Vegan"
+        ],
+        "menu_ids":[
+
+        ],
+        "image": "https://www.vegetariantimes.com/.image/t_share/MTQ3MDM3MzQ5NjA2MzM2NDA3/zi3000-shutterstock-buddha-bowl.jpg"
+    }
+
+]

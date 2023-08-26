@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="StyleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bb8c0a0493.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <title>Item</title>
+</head>
+<body style="background-color: whitesmoke;">
+    <!-- Header -->
+    <div id="header-search"></div>
+    <!-- User Info-->
+    <div th:if="${user.getRole() == 0}" id="guest-info"></div>
+    <div th:if="${user.getRole() == 1}" id="user-info"></div>
+    <!-- Cart -->
+    <div id="cart">
+        <div class="cart">
+            <div th:if="${cart.getItems().isEmpty() == true}" style="text-align: center">
+                <h2 >Your cart is empty</h2>
+            </div>
+            <div th:if="${cart.getItems().isEmpty() == false}">
+                <div class="split">
+                    <h2>Your Order</h2>
+                </div>
+                <div class="cart-table">
+                    <div class="cart-row" style="background-color: whitesmoke">
+                        <p>Name</p>
+                        <p>Quantity</p>
+                        <p>Price</p>
+                    </div>
+                    <div th:each="item : ${cart.getItems()}" class="cart-row">
+                        <p th:text="${item.getName()} + ' - ' + ${item.getOption()}">Item Name</p>
+                        <p th:text="'x' + ${item.getQuantity()}">Quantity</p>
+                        <p th:text="'$' + ${item.getTotal()}">Price</p>
+                    </div>
+                </div>
+                <a th:text="'Checkout: ' + ${cart.getTotal()}" href="cart" class="btn">Checkout: Total</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="item-display">
+        <form action="#" method="post">
+        <div class="id-top">
+            <h3 onclick="goBackOnce()" class="btn">Back</h3>
+            <h2 th:text="${item.getName()}">Item Name</h2>
+            <img th:src="${item.getImage()}" />
+            <p th:text="${item.getDescription()}"></p>
+        </div>
+        
+        <div style="padding: 10px;">
+            <div style="text-align: center">
+                <span id="invalid" class="error" ></span>
+            </div>
+            <h3>Select an Option</h3>
+            <div th:each="o : ${item.getOptionsStr()}" class="item-option">
+                <input type="radio" th:field="${option.optionStr}" th:value="${o}" name="option" />
+                <p th:text="${o}">Option</p>
+            </div> 
+        </div>
+        <div class="id-bottom">
+            <div class="quantity">
+                <i onclick="lessQuantity()" id="btnLess" class="fas fa-minus-circle"></i>
+                <input th:field="${option.quantity}" value="i" type="text" id="txtQuantity" />
+                <i onclick="moreQuantity()" id="btnMore" class="fas fa-plus-circle"></i>
+            </div>
+            <a onclick="submitOrderItem()" class="btn">Add to Order</a>
+        </div>
+        </form>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer" style="bottom: 0;  width: 99%"></div>
+    
+</body>
+
+<script th:inline="javascript">
+    var quantity = 1;
+    
+    function lessQuantity(){
+        if(quantity > 1) quantity= quantity - 1;
+        $("#txtQuantity").val(quantity);
+    }
+
+    function moreQuantity(){
+        quantity = quantity + 1;
+        $("#txtQuantity").val(quantity);
+    }
+
+</script>
+
+</html>

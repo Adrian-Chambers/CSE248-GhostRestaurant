@@ -1,0 +1,109 @@
+[
+    {
+        "item_id": 1,
+        "menu_item_name": "Burger",
+        "menu_item_description": "Burger topped with lettuce, tomato, onion, and pickle.",
+        "subsection": "Entres",
+        "image": "https://images.unsplash.com/photo-1551615593-ef5fe247e8f7?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1980&q=80",
+        "menu_item_pricing":[
+            { "priceString" : "$8.45" }, { "priceString" : "$9.55" }
+        ],
+        "options":[
+            "Classic Hamburger", "Cheeseburger"
+        ]
+    },
+    {
+        "item_id": 2,
+        "menu_item_name": "Sirloin Steak",
+        "menu_item_description": "Center-cut sirloin steak. Seasoned and seared.",
+        "subsection": "Entres",
+        "image": "https://az870929.vo.msecnd.net/cdn/media/home/recipes/recipes/g/grilledtopsirloinsteakwithromescosauce840x470.ashx?la=en&mw=610&w=610&hash=9C48F4E7ABA24039152C76058E96D558C74B493B",
+        "menu_item_pricing":[
+            { "priceString" : "$12.99" }, { "priceString" : "$18.99" }, { "priceString" : "$22.49" }
+        ],
+        "options":[
+            "6 oz", "9oz", "12oz"
+        ]
+    },
+    {
+        "item_id": 3,
+        "menu_item_name": "Chicken Sandwich",
+        "menu_item_description": "Sandwich with your choice of crispy or grilled chicken breast",
+        "subsection": "Entres",
+        "image": "https://tideandthyme.com/wp-content/uploads/2014/01/crispychickensandwich.jpg",
+        "menu_item_pricing":[
+            { "priceString" : "$14.99" }, { "priceString" : "$15.99" }
+        ],
+        "options":[
+            "Grilled", "Crispy"
+        ]
+    },
+    {
+        "item_id": 4,
+        "menu_item_name": "House Salad",
+        "menu_item_description": "Fresh house salad with mixed greens, cucumbers, tomatoes, red onions, croutons, and a dressing of your choice",
+        "subsection": "Sides",
+        "image": "https://food.fnr.sndimg.com/content/dam/images/food/fullset/2018/3/8/0/FNM_040118-Olive-Garden-Style-House-Salad_s4x3.jpg.rend.hgtvcom.826.620.suffix/1520543510452.jpeg",
+        "menu_item_pricing":[
+            { "priceString" : "$4.99" }, { "priceString" : "$4.99" }, { "priceString" : "$4.99" }, { "priceString" : "$4.99" }
+        ],
+        "options":[
+            "Ranch", "Blue Cheese", "Balsamic Vinaigrette", "Caesar"
+        ]
+    },
+    {
+        "item_id": 5,
+        "menu_item_name": "French Fries",
+        "menu_item_description": "Traditional french fries to add as a side to your meal.",
+        "subsection": "Sides",
+        "image": "https://www.cuisinart.com/share/images/recipes/photos/recipe_11651_258903521.jpg",
+        "menu_item_pricing":[
+            { "priceString" : "$2.99" }
+        ],
+        "options":[
+            "Regular"
+        ]
+    },
+    {
+        "item_id": 6,
+        "menu_item_name": "Mozzarella Sticks",
+        "menu_item_description": "Fried mozarella cheese served with marinara sauce.",
+        "subsection": "Appetizers",
+        "image": "",
+        "menu_item_pricing":[
+            { "priceString" : "$6.99" }
+        ],
+        "options":[
+            "Regular"
+        ]
+    },
+    {
+        "item_id": 7,
+        "menu_item_name": "Soup",
+        "menu_item_description": "Choose from a variety of soups",
+        "subsection": "Appetizers",
+        "image": "",
+        "menu_item_pricing":[
+            { "priceString" : "$5.99" }, { "priceString" : "$5.99" }, { "priceString" : "$5.99" }
+        ],
+        "options":[
+            "Chicken Noodle",
+            "French Onion",
+            "Clam Chowder"
+        ]
+    },
+    {
+        "item_id": 8,
+        "menu_item_name": "Soda",
+        "menu_item_description": "Choose from a variety of sodas.",
+        "subsection": "Drinks",
+        "image": "https://images.unsplash.com/photo-1527960471264-932f39eb5846?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2100&q=80",
+        "menu_item_pricing":[
+            { "priceString": "$3.49"}, { "priceString": "$3.49"}, { "priceString": "$3.49"}
+        ],
+        "options":[
+            "Pepsi", "Diet Pepsi", "Sprite"
+        ]
+    }
+
+]

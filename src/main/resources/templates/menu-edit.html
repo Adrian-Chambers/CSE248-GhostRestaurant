@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="StyleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bb8c0a0493.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <title>Edit Menu</title>
+</head>
+<body>
+    <div style="display: grid; grid-template-columns: 250px auto;">
+
+        <!-- Navigation -->
+        <div id="r-nav"></div>
+
+        <div>
+            <div class="r-title r-title bg-blue">
+                <h2>Edit Menu</h2>
+            </div>
+            <div class="r-page">
+        
+                <h3>Menu Items</h3>
+                <div class="menu-table">
+                    <div class="mt-row" style="background-color: whitesmoke;">
+                        <p>ID</p>
+                        <p>Name</p>
+                        <p>Category</p>
+                        <p>Options</p>
+                        <p>Description</p>
+                        <p></p>
+                    </div>
+                    <div class="mt-scroll">
+                        <div class="mt-row" th:each="item : ${menu.getItems()}">
+                            <p th:text="${item.getId()}"></p>
+                            <p th:text="${item.getName()}"></p>
+                            <p th:text="${item.getCategory()}"></p>
+                            <div>
+                                <p th:each="option : ${item.getOptionsStr()}" th:text="${option}"></p>
+                            </div>
+                            <p th:text="${item.getDescription()}"></p>
+                            <p><a th:href="'item-edit?id=' + ${item.getId()}">Edit</a></p>
+                        </div>
+                    </div>
+                    <a href="item-add" class="mt-add"><i class="fas fa-plus-circle"></i>  Add Item</a>
+                </div>
+                <br />
+
+</body>
+
+</html>

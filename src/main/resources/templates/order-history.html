@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="StyleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bb8c0a0493.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <title>Order History</title>
+</head>
+<body style="background-color:whitesmoke;">
+
+    <!-- Header -->
+    <div id="header"></div>
+    <!-- User Info-->
+    <div th:if="${user.getRole() == 0}" id="guest-info"></div>
+    <div th:if="${user.getRole() == 1}" id="user-info"></div>
+    <!-- Cart -->
+    <div id="cart">
+        <div class="cart">
+            <div th:if="${cart.getItems().isEmpty() == true}" style="text-align: center">
+                <h2 >Your cart is empty</h2>
+            </div>
+            <div th:if="${cart.getItems().isEmpty() == false}">
+                <div class="split">
+                    <h2>Your Order</h2>
+                </div>
+                <div class="cart-table">
+                    <div class="cart-row" style="background-color: whitesmoke">
+                        <p>Name</p>
+                        <p>Quantity</p>
+                        <p>Price</p>
+                    </div>
+                    <div th:each="item : ${cart.getItems()}" class="cart-row">
+                        <p th:text="${item.getName()} + ' - ' + ${item.getOption()}">Item Name</p>
+                        <p th:text="'x' + ${item.getQuantity()}">Quantity</p>
+                        <p th:text="'$' + ${item.getTotal()}">Price</p>
+                    </div>
+                </div>
+                <a th:text="'Checkout: ' + ${cart.getTotal()}" href="cart" class="btn">Checkout: Total</a>
+            </div>
+        </div>
+    </div>
+
+    <br />
+    <div th:if="${orders.isEmpty() == true}">
+        <div class="container1" style="text-align: center">
+            <h3>No Previous Orders</h3>
+            <p>Search for your favorite local restaurants and place an order today!</p>
+            <a href="index" class="btn">Search Now</a>
+        </div>
+    </div>
+    <div th:if="${orders.isEmpty() == false}" class="white-page">
+        <div class="oh-table" style="padding: 20px;">
+            <div class="oh-row" style="background-color: whitesmoke;">
+                <p>ID</p>
+                <p>Order Status</p>
+                <p>Total</p>
+                <p> </p>
+            </div>
+            <div class="oh-scroll">
+                <div class="oh-row" th:each="order : ${orders}">
+                    <p th:text="${order.getID()}"></p>
+                    <div>
+                        <p th:if="${order.orderComplete() == false}">Processing</p>
+                        <p th:if="${order.orderComplete() == true}">Complete</p>
+                    </div>
+                    <p th:text="${order.getTotal()}"></p>
+                    <p><a th:href="'invoice?id=' + ${order.getID()}">View</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+
+    <!-- Footer -->
+    <div id="footer" style="bottom: 0; position: absolute; width: 99%"></div>
+
+</body>
+</html>

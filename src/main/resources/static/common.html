@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="StyleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bb8c0a0493.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <title>Home</title>
+</head>
+<body>
+
+<!-- Header -->
+<header class="split" id="header-main">
+    <div><a href="index" class="logo"><h1><span style="color: #a1cde9">Ghost</span><span style="color: black">Restaurant</span></h1></a></div>
+    <div class="header-signin">
+        <a><i class="fas fa-user-circle" onclick="showUserInfo()"></i></a>
+        <a><i class="fas fa-shopping-bag"  onclick="showCart()"></i></a>
+    </div>
+    </div>
+</header>
+
+<header class="split bg-blue" id="header">
+    <div><a href="index" class="logo"><h1><span style="color: #91c8eb">Ghost</span><span style="color: lightcoral">Restaurant</span></h1></a></div>
+    <div class="header-signin">
+        <a><i class="fas fa-user-circle" onclick="showUserInfo()"></i></a>
+        <a><i class="fas fa-shopping-bag"  onclick="showCart()"></i></a>
+    </div>
+    </div>
+</header>
+
+<header id="header-logo" class="header-logo">
+    <div style="text-align: center"><a href="index" class="logo"><h2><span style="color: #acd4ec">Ghost</span><span style="color: lightcoral">Restaurant</span></h2></a></div>
+</header>
+
+<header class="header-search bg-blue" id="header-search">
+    <div><a href="index" class="logo"><h1><span style="color: #91c8eb">Ghost</span><span style="color: lightcoral">Restaurant</span></h1></a></div>
+    <div class="searchbar">
+        <input id="txtSearchLocation" type="text" placeholder="address" class="search" />
+        <input id="txtSearchKeyword" type="text" placeholder="keyword" class="search" />
+        <a class="btn" onclick="doSearch()">Find Food</a>
+    </div>
+    <div class="header-signin">
+        <a><i class="fas fa-user-circle" onclick="showUserInfo()"></i></a>
+        <a><i class="fas fa-shopping-bag" onclick="showCart()"></i></a>
+    </div>
+</header>
+
+<!-- User Info -->
+<div class="user-info">
+    <a href="account">Account Settings</a>
+    <a href="order-history">Order History</a>
+    <a href="sign-out-action">Sign Out</a>
+</div>
+
+<div class="guest-info">
+    <h3>You are not signed in</h3>
+    <a href="sign-in">Sign in</a>
+    <br />
+</div>
+
+<!-- Cart -->
+<div class="cart">
+    <div class="split">
+        <h2>Your Order</h2>
+    </div>
+    <div class="cart-items">
+        <div class="cart-item">
+            <p>Quantity</p>
+            <h3>Item Name</h3>
+            <p>Price</p>
+        </div>
+    </div>
+    <a href="checkout" class="btn">Checkout: Total</a>
+</div>
+
+<!-- Restaurant Nav -->
+<div class="r-nav">
+    <div><a href="index" class="logo"><h1><span style="color: #acd4ec">Ghost</span>Restaurant</h1></a></div>
+    <nav>
+        <a href="restaurant-orders">Orders</a>
+        <a href="menu-edit">Menu</a>
+        <a href="restaurant-info">Restaurant</a>
+        <a style="position: absolute; bottom: 10px; width: 220px;" href="sign-out-action">Sign Out</a>
+    </nav>
+</div>
+
+<!-- Footer -->
+<footer id="footer" class="bg-blue">
+<div class="footer container">
+    <div>
+        <div style="text-align: center"><a href="index" class="logo"><h2><span style="color: #91c8eb">Ghost</span><span style="color: lightcoral">Restaurant</span></h2></a></div>
+    </div>
+    <div>
+        <nav>
+            <a href="index">Home</a>
+            <a href="sign-in">Sign In</a>
+            <a href="register">Register</a>
+            <a href="register-restaurant">Add your Restaurant</a>
+            <a href="account">Account Details</a>
+        </nav>
+    </div>
+</div>
+</footer>
+
+
+</body>
+</html>

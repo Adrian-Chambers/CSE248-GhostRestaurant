@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="StyleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bb8c0a0493.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <title>Checkout</title>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-logo"></div>
+
+    <div>
+    <div class="checkout" style="margin: 0 auto 50px auto;">
+        <form action="#" th:action="@{/checkout}" method="post">
+        <div style="padding-right: 20px">
+            <span id="invalid" class="error"></span><br />
+            <div>
+                <h2>Payment</h2>
+                <label>Card Number</label><br />
+                <input th:field="${check.payNumber}" type="text" />
+                <div style="width: 48%; display: inline-block">
+                    <label>Exp. Month</label><br />
+                    <input th:field="${check.payMonth}" type="text" />
+                </div>
+                <div style="width: 48%; display: inline-block">
+                    <label>Exp. Year</label><br />
+                    <input th:field="${check.payYear}" type="text" />
+                </div>
+            </div>
+            <br />
+            <div>
+                <h2>Shipping</h2>
+                <div style="width: 48%; display: inline-block">
+                    <label>First Name</label><br />
+                    <input th:field="${check.firstName}" type="text" />
+                </div>
+                <div style="width: 48%; display: inline-block">
+                    <label>Last Name</label><br />
+                    <input th:field="${check.lastName}" type="text" />
+                </div>
+                <label>Address</label><br />
+                <input th:field="${check.shipStreet}" type="text" />
+                <label>Town/City</label><br />
+                <input th:field="${check.shipCity}" type="text"/>
+                <div style="width: 48%; display: inline-block">
+                    <label>State</label><br />
+                    <input th:field="${check.shipState}" type="text" />
+                </div>
+                <div style="width: 48%; display: inline-block">
+                    <label>Zipcode</label><br />
+                    <input th:field="${check.shipZip}" type="text" />
+                </div>
+                <br />
+            </div>
+        </div>
+        </form>
+        <div class="checkout-right" style="padding-left: 20px">
+            <div>
+                <br />
+                <h2>Your Order</h2>
+                <div class="checkout-top">
+                    <div class="checkout-row" style="background-color: whitesmoke">
+                        <p>Name</p>
+                        <p style="text-align: center">Quantity</p>
+                        <p style="text-align: center">Price</p>
+                    </div>
+                    <div class="checkout-items">
+                        <div th:each="item : ${cart.getItems()}" class="checkout-row">
+                            <p th:text="${item.getName()} + ' - ' + ${item.getOption()}">Item Name</p>
+                            <p th:text="'x' + ${item.getQuantity()}" style="text-align: center;">Quantity</p>
+                            <p th:text="'$' + ${item.getTotal()}"  style="text-align: center;">Price</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 th:text="'Total: ' + ${cart.getTotal()}"></h3>
+                <a href="cart" class="btn">Back to Cart</a><br /><br />
+                <a onclick="submitForm()" class="btn">Complete Order</a>
+            </div>
+            
+        </div>
+    </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+</body>
+<script>
+    
+</script>
+</html>

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../StyleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bb8c0a0493.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="../scripts.js"></script>
+    <title>Menu</title>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-search"></div>
+    <!-- User Info-->
+    <div th:if="${user.getRole() == 0}" id="guest-info"></div>
+    <div th:if="${user.getRole() == 1}" id="user-info"></div>
+    <!-- Cart -->
+    <div id="cart">
+        <div class="cart">
+            <div th:if="${cart.getItems().isEmpty() == true}" style="text-align: center">
+                <h2 >Your cart is empty</h2>
+            </div>
+            <div th:if="${cart.getItems().isEmpty() == false}">
+                <div class="split">
+                    <h2>Your Order</h2>
+                </div>
+                <div class="cart-table">
+                    <div class="cart-row" style="background-color: whitesmoke">
+                        <p>Name</p>
+                        <p>Quantity</p>
+                        <p>Price</p>
+                    </div>
+                    <div th:each="item : ${cart.getItems()}" class="cart-row">
+                        <p th:text="${item.getName()} + ' - ' + ${item.getOption()}">Item Name</p>
+                        <p th:text="'x' + ${item.getQuantity()}">Quantity</p>
+                        <p th:text="'$' + ${item.getTotal()}">Price</p>
+                    </div>
+                </div>
+                <a th:text="'Checkout: ' + ${cart.getTotal()}" href="cart" class="btn">Checkout: Total</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Restaurant Info -->
+    <div class="menu-showcase" th:style="'background-image: url(' + ${restaurant.getImage()} + ');'">
+        <div style="padding-top: 200px; padding-bottom: 50px;">
+        <div class="restaurant-info">
+            <h1 th:text="${restaurant.getName()}">Restaurant Name</h1>
+            <h3 th:text="${restaurant.getAddress()}">Address</h3>
+        </div>
+        </div>
+    </div>
+
+    <div class="white-page">
+
+    <!-- Menu Categories -->
+    <div class="menu-categories bg-blue">
+        <span th:each="category : ${menu.getCategories()}">
+            <a th:href="'#' + ${category}" th:text="${category}"></a>
+        </span>
+    </div>
+
+    <!-- Menu Items -->
+    <div class="container">
+        <div th:if="${menu.getItems().isEmpty()}">
+            <h3>This menu is currently unavailable.</h3>
+            <a onclick="goBackOnce()" class="btn">Return to Search</a>
+        </div>
+        <div th:each="category : ${menu.getCategories()}">
+            <h3 th:id="${category}" th:text="${category}">Category Name</h3>
+            <div class="menu-items">
+            <span th:each="item : ${menu.getItems()}" th:if="${item.getCategory()} == ${category}">
+                <a th:if="${item.getPriceStr() != 'Not Available'}" th:href="'item?id=' + ${item.getId()}"><div class="menu-item">
+                    <h3 th:text="${item.getName()}">Name</h3>
+                    <span style="color: black">
+                        <p th:text="${item.getDescription()}">Description</p>
+                        <p th:text="${item.getPriceStr()}">Price</p>
+                    </span>
+                </div></a>
+                <div th:if="${item.getPriceStr() == 'Not Available'}" class="menu-item">
+                    <h3 th:text="${item.getName()}">Name</h3>
+                    <p th:text="${item.getDescription()}">Description</p>
+                    <p th:text="${item.getPriceStr()}" style="color: grey">Price</p>
+                </div>
+            </span>
+            </div>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+    
+</body>
+
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="StyleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bb8c0a0493.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <title>Orders</title>
+</head>
+<body>
+    <div style="display: grid; grid-template-columns: 250px auto;">
+        <div id="r-nav"></div>
+        <div>
+            <div class="r-title bg-blue">
+                <h2>Orders</h2>
+            </div>
+            <div class="r-page">
+                <div th:if="${orders.isEmpty() == true}">
+                    <div class="container1">
+                        <h3>No Orders</h3>
+                    </div>
+                </div>
+                <div th:if="${orders.isEmpty() == false}" class="white-page">
+                    <div class="oh-table">
+                        <div class="oh-row" style="background-color: whitesmoke;">
+                            <p>ID</p>
+                            <p>Order Status</p>
+                            <p>Total</p>
+                            <p> </p>
+                        </div>
+                        <div class="oh-scroll">
+                            <div class="oh-row" th:each="order : ${orders}">
+                                <p th:text="${order.getID()}"></p>
+                                <div>
+                                    <p th:if="${order.orderComplete() == false}">Processing</p>
+                                    <p th:if="${order.orderComplete() == true}">Complete</p>
+                                </div>
+                                <p th:text="${order.getTotal()}"></p>
+                                <div>
+                                    <p><a th:href="'invoice?id=' + ${order.getID()}">View</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

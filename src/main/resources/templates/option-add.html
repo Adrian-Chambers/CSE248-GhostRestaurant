@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="StyleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bb8c0a0493.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <title>Add Option</title>
+</head>
+<bod>
+    <div style="display: grid; grid-template-columns: 250px auto;">
+        <div id="r-nav"></div>
+        <div>
+            <div class="r-title bg-blue">
+                <h2>Item Option</h2>
+            </div>
+            <div  class="r-page">
+            <span id="invalid" class="error"></span>
+            <form style="padding-top: 20px;" th:action="@{/option-add}" th:object="${itemOption}" method="post">
+                <div>
+                    <label>Option</label><br />
+                    <input th:field="*{option}" id="txtOption" type="text"/>
+                    <p class="subtext">Example: item sizes (small, medium large)</p>
+                </div>
+                <br />
+                <div>
+                    <label>Price</label><br />
+                    <input th:field="*{price}" id="txtPrice" type="text" />
+                </div>
+                <br /><br />
+                <a onclick="submitOption()" class="btn">Add Option</a>
+            </form>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

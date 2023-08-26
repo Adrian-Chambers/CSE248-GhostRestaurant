@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <link rel="stylesheet" href="StyleSheet.css">
+    <title>Sign Out</title>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-logo"></div>
+
+    <!-- Sign In-->
+    <div class="container1" style="margin-top: 50px;">
+        <h2 style="margin-bottom: 0;">Sign Out</h2>
+        <span id="invalid" class="error"></span>
+        <p th:text="'You are current signed in as ' + ${user.getUsername()} + '.'">You are current already signed in.</p>
+        <p>Would you like to sign out?</p>
+        <a href="/signout" class="btn">Sign Out</a><br /><br />
+        <a onclick="goBackOnce()" class="btn">Go Back</a>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer" style="bottom: 0; position: absolute; width: 99%"></div>
+
+</body>
+
+</html>

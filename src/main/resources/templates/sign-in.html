@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <link rel="stylesheet" href="StyleSheet.css">
+    <title>Sign In</title>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-logo"></div>
+
+    <!-- Sign In-->
+    <div class="container1" style="margin-top: 50px;">
+        <h2 style="margin-bottom: 0;">Sign In</h2>
+        <span id="invalid" class="error"></span>
+        <form action="#" th:action="@{/sign-in}" th:object="${user}"method="post">
+            <div>
+                <label>Username/Email</label><br />
+                <input th:field="*{username}" type="text" />
+            </div>
+            <br />
+            <div> 
+                <label>Password</label><br />
+                <input th:field="*{password}" type="password" />
+            </div>
+            <br />
+            <a onclick="submitForm()" class="btn">Sign In</a>
+        </form>
+        <a href="register" style="text-align: center;"><p>Create an Account</p></a>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer" style="bottom: 0; position: absolute; width: 99%"></div>
+
+</body>
+<script>
+    if(window.location.search == "?invalid=username"){
+        $("#invalid").text("Username/email does not exist");
+        $("#invalid").show();
+    }
+    if(window.location.search == "?invalid=password"){
+        $("#invalid").text("Incorrect Password");
+        $("#invalid").show();
+    }
+</script>
+
+
+</html>

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="StyleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bb8c0a0493.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <title>Home</title>
+</head>
+<body>
+    <div class="showcase" style="background-image: url('https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1831&q=80')">
+    
+    <!-- Header -->
+    <div id="header-main"></div>
+    <!-- User Info-->
+    <div th:if="${user.getRole() == 0}" id="guest-info"></div>
+    <div th:if="${user.getRole() == 1}" id="user-info"></div>
+    <!-- Cart -->
+    <div id="cart">
+        <div class="cart">
+            <div th:if="${cart.getItems().isEmpty() == true}" style="text-align: center">
+                <h2 >Your cart is empty</h2>
+            </div>
+            <div th:if="${cart.getItems().isEmpty() == false}">
+                <div class="split">
+                    <h2>Your Order</h2>
+                </div>
+                <div class="cart-table">
+                    <div class="cart-row" style="background-color: whitesmoke">
+                        <p>Name</p>
+                        <p>Quantity</p>
+                        <p>Price</p>
+                    </div>
+                    <div th:each="item : ${cart.getItems()}" class="cart-row">
+                        <p th:text="${item.getName()} + ' - ' + ${item.getOption()}">Item Name</p>
+                        <p th:text="'x' + ${item.getQuantity()}">Quantity</p>
+                        <p th:text="'$' + ${item.getTotal()}">Price</p>
+                    </div>
+                </div>
+                <a th:text="'Checkout: ' + ${cart.getTotal()}" href="cart" class="btn">Checkout: Total</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search -->
+        <div class="showcase-inner">
+            <h1 style="font-size: 40px;">Delivering your favorite food</h1>
+            <div>
+                <input type="text" placeholder="Enter delivery address here" class="index-search" id="txtSearchLocation" />
+                <a class="btn" id="btnSearch" onclick="doSearchLocation()">Find Food</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="white-page">
+
+    <!-- About -->
+    <div class="container">
+        <h2>About Us</h2>
+        <p>We help you find great meals fast.</p>
+        <p>It's easy: simply type a zipcode, city, or address into the search bar above and you'll be immediately connected to menus from the best restaurants in your area.</p>
+        <p>Enjoy eating the convenient way with places that deliver directly to your door. We make it easy for you to find the food you crave!</p>
+    </div>
+    <br />
+
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+</body>
+<script>
+    
+</script>
+</html>

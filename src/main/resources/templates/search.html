@@ -1,0 +1,79 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" href="StyleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bb8c0a0493.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <title>Search</title>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-search" class="bg-blue"></div>
+    <!-- User Info-->
+    <div th:if="${user.getRole() == 0}" id="guest-info"></div>
+    <div th:if="${user.getRole() == 1}" id="user-info"></div>
+    <!-- Cart -->
+    <div id="cart">
+        <div class="cart">
+            <div th:if="${cart.getItems().isEmpty() == true}" style="text-align: center">
+                <h2 >Your cart is empty</h2>
+            </div>
+            <div th:if="${cart.getItems().isEmpty() == false}">
+                <div class="split">
+                    <h2>Your Order</h2>
+                </div>
+                <div class="cart-table">
+                    <div class="cart-row" style="background-color: whitesmoke">
+                        <p>Name</p>
+                        <p>Quantity</p>
+                        <p>Price</p>
+                    </div>
+                    <div th:each="item : ${cart.getItems()}" class="cart-row">
+                        <p th:text="${item.getName()} + ' - ' + ${item.getOption()}">Item Name</p>
+                        <p th:text="'x' + ${item.getQuantity()}">Quantity</p>
+                        <p th:text="'$' + ${item.getTotal()}">Price</p>
+                    </div>
+                </div>
+                <a th:text="'Checkout: ' + ${cart.getTotal()}" href="cart" class="btn">Checkout: Total</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="white-page">
+
+    <!-- Search Results -->
+    <div class="container" th:if="${results.isEmpty()} == false">
+        <h2 th:text="'Top Results: ' + ${keyword} "></h2>
+        <div class="results" th:each="result : ${results}">
+            <a th:href="@{'/menu?id=' + ${result.getIdStr()}}">
+            <div class="result">
+                <img th:src="${result.getImage()}" />
+                <div>
+                    <h3 th:text="${result.getName()}">Name</h3>
+                    <span style="color:black">
+                    <h4 th:text="${result.getAddress()}">Address</h4>
+                    <h4 th:if="${result.getCuisines().isEmpty() == false}" th:text="'Cuisine: ' + ${result.getCuisinesStr()}">Food</h4>
+                    </span>
+                </div>
+            </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="container" th:if="${results.isEmpty()} == true">
+        <h2 style="text-align: center">No Results Found</h2>
+    </div>
+    
+    <br />
+
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+</body>
+</html>

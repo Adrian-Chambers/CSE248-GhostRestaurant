@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="StyleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bb8c0a0493.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <title>Add Item</title>
+</head>
+<bod>
+    <div style="display: grid; grid-template-columns: 250px auto;">
+        <div id="r-nav"></div>
+        <div>
+            <div class="r-title bg-blue">
+                <h2>Add Item</h2>
+            </div>
+            <div  class="r-page">
+            <span id="invalid" class="error"></span>
+            <form style="padding-top: 20px;" action="#" th:object="${item}" method="post">
+                <div>
+                    <label>*Name</label><br />
+                    <input th:field="*{name}" id="txtName" type="text" />
+                </div> 
+                <br />
+                <div>
+                    <label>*Category</label><br />
+                    <input th:field="*{category}" id="txtCategory" type="text" />
+                </div>
+                <br />
+                <div>
+                    <label>Description</label><br />
+                    <input th:field="*{description}" id="txtDescription" type="text" />
+                </div> 
+                <br />
+                <div>
+                    <label>Image</label><br />
+                    <input th:field="*{image}" id="txtImage" type="text" />
+                </div>
+                <br /><br />
+                <a onclick="submitMenuItem()" class="btn">Continue</a>
+            </form>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

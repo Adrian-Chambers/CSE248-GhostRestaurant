@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="StyleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bb8c0a0493.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <title>Cart</title>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-logo"></div>
+
+    <div class="white-page">
+    <div class="container">
+        <div th:if="${cart.getItems().isEmpty() == true}" style="text-align: center">
+            <h2 >Your cart is empty</h2>
+        </div>
+        <div th:if="${cart.getItems().isEmpty() == false}">
+            <div class="split">
+                <h2>Your Order</h2>
+            </div>
+            <div class="cart-table">
+                <div class="cart-row" style="background-color: whitesmoke">
+                    <p>Name</p>
+                    <p>Quantity</p>
+                    <p>Price</p>
+                </div>
+                <div th:each="item : ${cart.getItems()}" class="cart-row">
+                    <p th:text="${item.getName()} + ' - ' + ${item.getOption()}">Item Name</p>
+                    <p th:text="'x' + ${item.getQuantity()}">Quantity</p>
+                    <p th:text="'$' + ${item.getTotal()}">Price</p>
+                    <p><a th:href="'cart-item?id=' + ${item.getId()}">Edit</a></p>
+                </div>
+                <div class="cart-row" style="background-color: whitesmoke">
+                    <p> </p>
+                </div>
+            </div>
+            <h2 th:text="'Total: $' + ${cart.getTotal()}">Total</h2>
+            <br />
+            <a th:href="'menu?id=' + ${restaurant.getIdStr()}" class="btn">Back</a>
+            <a href="checkout" class="btn" style="float: right">Checkout</a>
+        </div>
+    </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+
+</body>
+<script>
+    
+</script>
+</html>

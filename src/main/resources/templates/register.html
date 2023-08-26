@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <link rel="stylesheet" href="StyleSheet.css">
+    <title>Register</title>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-logo"></div>
+
+    <!-- Register -->
+    <div class="container1">
+        <h2 style="margin-bottom: 0;">Sign Up</h2>
+        <span id="invalid" class="error"></span>
+        <form action="#" th:action="@{/register}" th:object="${user}" method="post">
+            <div style="width: 49%; display: inline-block">
+                <label>First Name</label><br />
+                <input th:field="*{firstName}" type="text" />
+            </div>
+            <div style="width: 49%; display: inline-block">
+                <label>Last Name</label><br />
+                <input th:field="*{lastName}" type="text" />
+            </div>
+            <br /><br />
+            <div>
+                <label>Username/Email</label><br />
+                <input th:field="*{username}" type="text" />
+            </div>
+            <br />
+            <div>
+                <label>Password</label><br />
+                <input th:field="*{password}" type="password" />
+            </div>
+            <br />
+            <a onclick="submitForm()" class="btn" >Sign Up</a>
+        </form>
+        <p style="text-align: center">Already have an account? <a href="sign-in">Sign in.</a></p>
+        <br />
+    </div>
+    <br />
+
+    <!-- Footer -->
+    <div id="footer" ></div>
+
+</body>
+
+<script>
+    if(window.location.search == "?invalid=username"){
+        $("#invalid").text("Username/email is already taken");
+        $("#invalid").show();
+    }
+</script>
+
+</html>

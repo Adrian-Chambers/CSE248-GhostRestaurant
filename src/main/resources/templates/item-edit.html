@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="StyleSheet.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/bb8c0a0493.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <title>Edit Item</title>
+</head>
+<bod>
+    <div style="display: grid; grid-template-columns: 250px auto;">
+        <div id="r-nav"></div>
+        <div>
+            <div class="r-title bg-blue">
+                <h2>Edit Item</h2>
+            </div>
+            <div  class="r-page">
+            <span id="invalid" class="error"></span>
+            <form style="padding-top: 20px;" action="#" th:action="@{/item-edit}" th:object="${item}" method="post">
+                <div>
+                    <label>*Name</label><br />
+                    <input th:field="*{name}" id="txtName" type="text" />
+                </div>
+                <br />
+                <div>
+                    <label>*Category</label><br />
+                    <input th:field="*{category}" id="txtCategory" type="text" />
+                </div>
+                <br />
+                <div>
+                    <label>Description</label><br />
+                    <input th:field="*{description}" id="txtDescription" type="text" />
+                </div>
+                <br />
+                <div>
+                    <label>Image</label><br />
+                    <input th:field="*{image}" id="txtImage" type="text" />
+                </div>
+                <br />
+                <div class="menu-table">
+                    <div class="ot-row" style="background-color: whitesmoke;">
+                        <p>Options</p>
+                        <p></p>
+                    </div>
+                    <div class="mt-scroll">
+                        <div th:if="${item.getOptionsStr().isEmpty()}">
+                            <p style="padding: 0 0 0 10px">There are current no options set for this item. To make your item available for purchase, please add at least one option.</p>
+                            <p></p>
+                        </div>
+                        <div class="ot-row" th:each="option, i : ${item.getOptionsStr()}">
+                            <p th:text="${option}"></p>
+                            <p><a th:href="'option-edit?id=' + ${i.index}" >Edit</a></p>
+                        </div>
+                    </div>
+                    <a href="option-add" class="mt-add"><i class="fas fa-plus-circle"></i>  Add Option</a>
+                </div>
+                <br /><br />
+                <a onclick="submitMenuItem()" class="btn">Save Item</a>
+                <a th:href="'item-remove?id=' + ${item.getId()}" class="btn">Delete Item</a>
+            </form>
+            </div>
+        </div>
+    </div>
+    
+</body>
+</html>

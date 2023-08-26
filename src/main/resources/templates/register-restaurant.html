@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script type="text/javascript" src="scripts.js"></script>
+    <link rel="stylesheet" href="StyleSheet.css">
+    <title>Add Your Restaurant</title>
+</head>
+<body>
+    <!-- Header -->
+    <div id="header-logo"></div>
+    
+    <!-- Register -->
+    <div class="showcase bg-blue" style="height: 550px;">
+    <div class="split">
+        <div style="margin: 100px 50px 0 100px">
+            <h1>Partner with Us Today</h2>
+            <h3>Reach out to new customers by featuring your menu on our website today.</p>
+        </div>
+        <div class="container1" style="margin: 25px auto 25px auto">
+            <h2 style="margin-bottom: 0;">Add your Restaurant</h2>
+            <span id="invalid" class="error"></span>
+            <form action="#" th:action="@{/register-restaurant}" method="post">
+                <div>
+                    <label>Restaurant Name</label><br />
+                    <input th:field="${restaurant.name}" type="text" />
+                </div>
+                <div>
+                    <label>Restaurant Address</label><br />
+                    <input th:field="${restaurant.street}" type="text" placeholder="address" />
+                    <input th:field="${restaurant.city}" type="text" placeholder="city"/>
+                    <div style="width: 48%; display: inline-block">
+                        <input th:field="${restaurant.state}" type="text" placeholder="state"/>
+                    </div>
+                    <div style="width: 48%; display: inline-block">
+                        <input th:field="${restaurant.zipcode}" type="text" placeholder="zipcode"/>
+                    </div>
+                </div>
+                <br />
+                <div style="width: 100%;">
+                    <div style="width: 48%; display: inline-block">
+                        <label>First Name</label><br />
+                        <input th:field="${user.firstName}" type="text" />
+                    </div>
+                    <div style="width: 48%; display: inline-block">
+                        <label>Last Name</label><br />
+                        <input th:field="${user.lastName}" type="text" />
+                    </div>
+                </div>
+                <div>
+                    <label>Username/Email</label><br />
+                    <input th:field="${user.username}"type="text" />
+                </div>
+                <div>
+                    <label>Password</label><br />
+                    <input th:field="${user.password}" type="password" />
+                </div>
+                <br />
+                <a onClick="submitForm()" class="btn">Get Started</a>
+            </form>
+            <br />
+        </div>
+    </div>
+    </div>
+
+    <div class="white-page">
+
+    <!-- Additional Info -->
+    <div class="container">
+        <h2>How It Works</h2>
+        <p>Reach out to new hungry customers and increase takeout sales today by adding your menu to our website.</p>
+        <p>Today, more and more people enjoy the convenience of getting food delivered directly to their door. Our website makes it easy for customers to order food from their favorite restaurants and have it immediately delivered to them.</p>
+        <p>Adding your menu to our website will not only make your current customers happy, it will also allow you to reach out to new customers. Our search engine makes it easy for users to search for restaurants in their area. This means that local customers will be connected to your restaurant simply by using our nearby search function.</p>
+        <p>Our restaurant dashboard makes it easy for you to keep track of sales, view orders, and update your menu all at the tip of your fingers.</p>
+    </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+    
+</body>
+
+<script>
+    if(window.location.search == "?invalid=username"){
+        $("#invalid").text("Username/email is already taken");
+        $("#invalid").show();
+    }
+    if(window.location.search == "?invalid=restaurant"){
+        $("#invalid").text("Restaurant name is already taken");
+        $("#invalid").show();
+    }
+</script>
+
+
+</html>
